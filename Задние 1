@@ -1,5 +1,6 @@
 #1. Выберите 15 стран с наибольшим процентом переболевших на 31 марта (в выходящем датасете необходимы колонки: iso_code, страна, процент переболевших)
-"""
+
+```
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, desc, round
 
@@ -15,6 +16,8 @@ df = csv_df.filter(csv_df['date'] == '2021-03-31')\
                     round(col('total_cases_per_million') / 10_000, 2).alias('recovered_percent '))\
             .orderBy(col('total_cases_per_million').desc())
 df.show(15)
+```
+
 """
 """
 +--------+-------------+------------------+
